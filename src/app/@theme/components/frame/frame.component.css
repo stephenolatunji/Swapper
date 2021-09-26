@@ -1,0 +1,42 @@
+.logo {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0px 40px 0px ;
+}
+.text1 {
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 30px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #26474E;
+}
+.text2 {
+    margin: 10px 0px 32px 0px;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    color: #26474E;
+}
+.text3 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 29px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #26474E;
+}
+
+.frame {
+    display: flex;
+    justify-content: center;
+    height: 60vh;
+}
+@media screen and (max-width: 1015px) {
+    .frame {
+       height: 50vh;
+    }
+}

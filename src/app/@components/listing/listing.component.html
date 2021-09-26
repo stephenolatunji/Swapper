@@ -1,0 +1,218 @@
+
+<div class="parent">
+    <app-header ></app-header>
+    <div class="body animate__animated animate__fadeIn">
+        <div class="segment1">
+
+            <!-- create order -->
+            <div class="text1">Create order</div>
+            <div class="square-box">
+                <div class="first-line">
+            
+                    <div class="second-line" >
+                        <div class="text2">
+                            I want to swap
+                        </div>
+                        <div class="input-section">
+                            <select name="myCurrency" class="select" [(ngModel)]="order.myCurrency" (change)="doCalculation()">
+                                <option value=1 >NGN</option>
+                                <option value=2 >USD</option>
+                                <option value=4 >EUR</option>
+                                <option value=3 >GBP</option>
+                                <option value=5 >CAD</option>
+                            </select>
+                            <input type="number" class="firstInput w-50" name="myAmount" [(ngModel)]="order.myAmount"  (keyup)="doCalculation()"/>
+                        </div>
+                    </div>
+            
+                </div>
+                <!-- Market Rate -->
+                <div class="head">Market Rate</div>
+                
+                <div class="all-market-rate"  *ngIf="order.myCurrency==1 ">
+                    <div class="market-rate_" (click)="toggelePrefferdCurrency(2, 'USD')" id="usd" style="border: 0.5px solid rgba(38, 71, 78, 0.4);">
+                        <div class="countryCode">
+                            <img src="assets/listing/usd.svg" /><br />
+                            <div class="myCode">USD</div>
+                        </div>
+
+                        <div class="amount_and_down-trend">
+                            <div class="amount">
+                                $ 0.00
+                            </div>
+                            <img src="assets/listing/down-trend.svg" alt="">
+                        </div>
+
+                        <div class="last-chart">
+                            <img src="assets/listing/arrow-down.svg" alt="">
+                            $0.00
+                        </div>
+                    </div>
+
+                    <div class="market-rate_"  (click)="toggelePrefferdCurrency(5, 'CAD')" id="cad">
+                        <div class="countryCode">
+                            <img src="assets/listing/cad.svg" /><br />
+                            <div class="myCode">CAD</div>
+                        </div>
+
+                        <div class="amount_and_down-trend">
+                            <div class="amount">
+                                $ 0.00
+                            </div>
+                            <img src="assets/listing/down-trend.svg" alt="">
+                        </div>
+
+                        <div class="last-chart">
+                            <img src="assets/listing/arrow-down.svg" alt="">
+                            $0.00
+                        </div>
+                    </div>
+
+                    <div class="market-rate_" (click)="toggelePrefferdCurrency(3, 'GBP')" id="gbp">
+                        <div class="countryCode">
+                            <img src="assets/listing/gbp.svg" /><br />
+                            <div class="myCode">GBP</div>
+                        </div>
+
+                        <div class="amount_and_down-trend">
+                            <div class="amount">
+                                $ 0.00
+                            </div>
+                            <img src="assets/listing/down-trend.svg" alt="">
+                        </div>
+
+                        <div class="last-chart">
+                            <img src="assets/listing/arrow-down.svg" alt="">
+                            $0.00
+                        </div>
+                    </div>
+
+                    <div class="market-rate_" (click)="toggelePrefferdCurrency(4, 'EUR')" id="eur">
+                        <div class="countryCode">
+                            <img src="assets/listing/jpy.svg" /><br />
+                            <div class="myCode">EUR</div>
+                        </div>
+
+                        <div class="amount_and_down-trend">
+                            <div class="amount">
+                                $ 0.00
+                            </div>
+                            <img src="assets/listing/down-trend.svg" alt="">
+                        </div>
+
+                        <div class="last-chart">
+                            <img src="assets/listing/arrow-down.svg" alt="">
+                            $0.00
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="single-card-list" *ngIf="order.myCurrency!=1 ">
+                    <div class="inside">
+                        <img src="assets/listing/ngn.svg" height="83" width="83" alt="">
+                        <div class="currency-text">
+                            <div class="ngn">NGN</div>
+                            <div class="amount-ratio">₦ 0.00/$ 0.00</div>
+                        </div>
+                    </div>
+
+                    <div class="chat-section">
+                        <img class="ml-auto" src="assets/listing/chart.svg" alt="" class="imgChart"> <br />              
+                        <div class="inside-bottom">
+                            $0.00
+                            <img alt="" src="assets/listing/arrow-down.svg" height="15" > 
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Prefered Rate -->
+                
+                <div class="third-line" style="margin-top: 35px">
+                    
+                    <div class="whole">
+                        <div class="sub-whole">
+                            <div style="width: 50%;" class="head">My preferred rate</div>
+                            <div class="input-section" style="margin-right: 21px">
+                                
+                                <!-- <div class="box">{{order.fromCurrency}}</div> -->
+                                <div class="box">Rate</div>
+                                <!-- <img src="assets/listing/swap.svg"  style="margin-right: 11px"/> -->
+                                <input type="number" [(ngModel)]="order.rate" name="rate"  (keyup)="doCalculation()"/>
+                            </div>
+                        </div>
+                        
+                        <div class="sub-whole">
+                            <div class="head"> You will get</div>
+                            <div class="input-section">
+                                <select [(ngModel)]="order.convertedCurrency" class="select" name="convertedCurrency" (change)="doCalculation()" id="convertedCurrency">
+                                    <option value=2>USD</option>
+                                    <option value=1>NGN</option>
+                                    <option value=4>EUR</option>
+                                    <option value=3>GBP</option>
+                                    <option value=5>CAD</option>
+                                </select>
+                                <input type="number" readonly [(ngModel)]="order.convertedAmount" name="convertedAmount"/>
+                            </div>
+                        </div>
+                        
+            
+                    </div>
+                
+                </div>
+            
+            </div>
+
+            <!-- destination account details -->
+            <div class="text1 mb-4">Destination Account Details</div>           
+            <div class="last-box">
+                <div class="row">
+
+                    <div class="col-12 col-md-6" >
+                        <label for="bank">Bank</label><br />
+                        <select id="bank" [(ngModel)]="order.myBankName" name="myBankName" class="col-12">
+                            <option *ngFor="let bank of allBanks" [value]="bank?.name"> {{bank?.name}} </option>
+                        </select>
+                    </div>
+    
+                    <div class="col-12 col-md-6 mt-4 mt-md-0 " >
+                        <label for="bank" id="account_no" >Account Number</label><br />
+                        <input type="number" id="account_no"  [(ngModel)]="order.myAccountNumber" name="myAccountNumber" class="col-12" />
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-12 col-md-6" style="margin-top: 19.69px" *ngIf="order?.myCurrency==1">
+                        <label for="routing_no">Routing Number</label><br />
+                        <input type="text" id="routing_no" name="bankRouteNo" [(ngModel)]="order.bankRouteNo" class="col-12" />
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="btn-section d-flex">
+
+                <button type='submit' *ngIf="!unfullfilledOrder?.status" class="ml-auto" mat-button (click)="loading.publish? '' : checkIfAllInput('publish')">
+                    <span *ngIf="!loading.publish">Post Order</span> 
+                    <img *ngIf="loading.publish" src="assets/auth/loader.gif" width="20" height="20" alt="">
+                </button>
+              
+                <button type='submit' mat-button (click)="loading.findMach? '' : (unfullfilledOrder?.status)? editOrderHandler() : checkIfAllInput('findMatch')">
+                    <span *ngIf="!loading.findMach">Find A Match</span> 
+                    <img *ngIf="loading.findMach" src="assets/auth/loader.gif" width="20" height="20" alt="">
+                </button>
+               
+            </div>
+        </div>
+
+        <div class="segment2" >
+            <div class="group1">
+                <img src="assets/listing/smallcard.svg" width="" />
+            </div>
+            <div class="group2">
+                <img src="assets/listing/group.svg" width="" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-response [data] = "matchFound" *ngIf="showResponse"></app-response>

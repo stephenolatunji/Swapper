@@ -1,0 +1,81 @@
+  <div class="whole animate__animated animate__fadeIn">
+    <!-- <div class="top">
+        <img src="assets/auth/back.svg" alt="" (click)="goBack()" class="pointer">
+    </div> -->
+    <form (submit)="handleSubmit()" class="body">
+        <div class="text1">
+            Complete your profile <span (click)="goBack()">or go Back</span>
+        </div>
+        <div class="text2">
+            You are required to provide necessary documents to complete registration.
+        </div>
+        <div style="font-size: 13px; margin-top: 5px; color: red;">{{err}}</div>
+        <div class="form-group">
+            <label for="password">Bank Verification Number</label>
+            <div class="input-box ">
+              <input type="number" id="edit" [(ngModel)]="user_.bvn" name="bvn"/>
+            <!-- <div style="cursor: pointer" class="ml-auto">
+                <img src="assets/auth/edit.svg" />
+            </div> -->
+            </div>
+        </div>
+        <div class="">
+            <label for="fileInput">Select Prefered ID</label>
+            <div class="choice-selection d-flex">
+                    <!-- [(ngModel)]="user.completed" name="completed" -->
+                <mat-radio-group aria-label="Select an option" [(ngModel)]="user_.documentType" name="documentType">
+                    <mat-radio-button (change)="documentToggle()"  value="1" name="nin" ><span>NIN</span></mat-radio-button>
+                    <mat-radio-button (change)="documentToggle()" class="offset-5" value="2" [checked]="true" ><span>Int’l Passport</span></mat-radio-button>
+                </mat-radio-group>
+                <!-- <div class="offset-2 chkbox">
+                    <mat-checkbox class="mt-2" color="primary" checked [(ngModel)]="user.intPassport" name="intPassport" ></mat-checkbox>
+                    <span>Int’l Passport</span>
+                </div> -->
+            </div>
+
+            <!-- Nin -->
+            <div class=""  *ngIf="user_.documentType=='1'">
+                <label for="edit">Serial Number</label>
+                <div class="input-box " style="margin-bottom: 0px;">
+                    <input type="text" name="documentNumber" [(ngModel)]="user_.documentNumber" style="width: 100%;"/>
+                </div>
+            </div>
+
+            <!-- IntPassport -->
+            <div class="edit" *ngIf="user_.documentType=='2'" > 
+                <div style="width: 100%; margin-right: 10px;" >
+                    <label for="edit">Passport Number</label>
+                    <div class="input-box mb-0 ">
+                        <input type="text" name="documentNumber" [(ngModel)]="user_.documentNumber" />
+                    </div>
+                </div>
+                <div>
+                    <label for="edit">Expiry Date</label>
+                    <input class="date-input mb-0" type="date" name="documentExpiryDate" [(ngModel)]="user_.documentExpiryDate" />
+                </div>
+            </div>
+            
+            <!-- upload file -->
+            <div class="drag-drop uploadfilecontainer" style="margin-top: 10px;" appDnd (onFileDropped)="uploadFile($event)" >
+                <div>
+                    <img src="assets/auth/share.svg" alt="">
+                </div>
+                <div>
+                    <input type="file" #fileInput id="fileInput" hidden (change)="uploadFile($event.target.files)" >
+                    Drag and drop your file here <br />
+                    or <br /><span (click)="fileInput.click()"> browse</span>
+                </div>
+                <div  class="files-list" *ngFor="let file of files;let i= index">
+                    <p> {{ file }} </p>
+                 </div>
+         
+            </div>
+
+            <button type='submit' mat-button (click)="loading? '' : handleSubmit()">
+                <span *ngIf="!loading">Create Account</span> 
+                <img *ngIf="loading" src="assets/auth/loader.gif" width="20" height="20" alt="">
+            </button>
+
+        </div>
+    </form>
+  </div>  

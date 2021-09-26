@@ -1,0 +1,288 @@
+
+
+<!-- !successful -->
+
+
+<div class="modal fade"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTittle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- <div class="modal-header">
+              <i class="fa fa-arrow-left" aria-hidden="true" (click)="close()"></i>
+            </div> -->
+      
+            <!-- <div class="body modal-body" *ngIf="success">
+                <div class="d-flex"><img src="assets/listing/close.svg" class="ml-auto" alt="" (click)="close()"></div>
+                <div class="success text-center">
+                    <img src="assets/listing/success.svg" width="200" height="200" alt="">
+                </div>
+                <div class="text1">Congratulations!</div>
+                <div class="text2">
+                    Anelloh has found you a match, you can<br /> now proceed with your transaction<br /> process
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <div class="box">
+                        <div class="d-flex">
+                            <div>
+                                <img src="assets/listing/usd.svg" class="" alt="" width="40" height="40" style="margin-right: 7px;">
+                            </div>
+                            <div style="display: block;">
+                                <div>You got</div>
+                                <div>
+                                    {{
+                                        data?.convertedCurrency == 1 ? '₦' :
+                                        data?.convertedCurrency == 2 ? '$' :
+                                        data?.convertedCurrency == 5 ? 'C$' :
+                                        data?.convertedCurrency == 3 ? '£' : 
+                                        data?.convertedCurrency == 4 ? '€' : data?.convertedCurrency 
+                                    }}
+                                     {{data?.convertedAmount}}</div>
+                                <div>
+                                Rate     
+                                {{
+                                    data?.myCurrency == '1' ? '₦' :
+                                    data?.myCurrency == '2' ? '$' :
+                                    data?.myCurrency == '5' ? 'C$' :
+                                    data?.myCurrency == '3' ? '£' :
+                                    data?.myCurrency == '4' ? '€' : data?.myCurrency
+                                }}
+                                {{data?.rate}}/
+                                {{
+                                    data?.convertedCurrency == '1' ? '₦' :
+                                    data?.convertedCurrency == '2' ? '$' :
+                                    data?.convertedCurrency == '5' ? 'C$' :
+                                    data?.convertedCurrency == '3' ? '£' : 
+                                    data?.convertedCurrency == '4' ? '€' : data?.convertedCurrency
+                                }}
+                                </div>           
+                            </div>
+                        </div>
+                        <div class="non-flex">
+                            <div>Market rate</div>
+                            <img src="assets/listing/up-trend.svg" class="mt-1" alt="">
+                            <div style="margin-top: -6px;">+ ₦ 4.00 <img src="assets/listing/arrow-up.svg" alt=""></div>
+                        </div>
+            
+                    </div>
+                </div>
+                <div class="notice">
+                    <img src="assets/listing/notice.svg" alt="">
+                    You have 12 hours to make payment or  your match will be cancelled.
+                </div>
+            
+                <div class="btn-section">
+                    <button mat-button (click)="close()">Pay Later</button>
+                    <button type='submit' mat-button (click)="loading? '' : payNow()">
+                        <span *ngIf="!loading">Pay Now</span> 
+                        <img *ngIf="loading" src="assets/auth/loader.gif" width="20" height="20" alt="">
+                    </button>
+                </div>
+            </div> -->
+            
+            <!-- unsuccessful -->
+            <!-- <div class="body modal-body" *ngIf="!success">
+                <div class="d-flex"><img src="assets/listing/close.svg" class="ml-auto" alt=""></div>
+                <div class="success text-center">
+                    <img src="assets/listing/notSuccess.svg" alt="">
+                </div>
+                <div class="text1 mt-4">Oh No!</div>
+                <div class="text2">
+                    Anelloh could not find you  a match, you<br /> can check out the listing for your<br /> prefered match
+                </div>
+                <div class="not-btn-section">
+                    <button mat-button class="not-success-btn"  (click)="close()">View Listing</button>
+                </div>
+            </div> -->
+            
+            <div class="body modal-body" *ngIf="success">
+                <div class="cancel"><img src="assets/response/clear.svg" alt="" (click)="close()" height="15" width="15"></div>
+
+                <div class="header1" *ngIf="whoToSeeResponse=='listing'">You order has been matched!!</div>
+                <div class="header2" *ngIf="whoToSeeResponse=='listing'">You may now complete your transaction.</div>
+                <div class="summary">
+                    <div class="header1 d-flex mt-0 mb-3">
+                        <div>Summary</div>
+                        <div></div>
+                    </div> 
+
+                    <div class="one pb-1">
+                        <div class="sub-one">
+                            <div class="label">You will recieve</div>
+                            <div>
+                                {{
+                                    data?.myCurrency == 'NGN' || data?.myCurrency == 1 ? '₦' :
+                                    data?.myCurrency == 'USD' || data?.myCurrency == 2 ? '$' :
+                                    data?.myCurrency == 'CAD' || data?.myCurrency == 4 ? 'C$' :
+                                    data?.myCurrency == 'GBP' || data?.myCurrency == 3 ? '£' :
+                                    data?.myCurrency == 'EUR' || data?.myCurrency == 5 ? '€' : data?.myCurrency
+                                }} {{ data?.myAmount }}
+                            </div>
+                        </div>
+                        <div class="sub-one mt-2">
+                            <div class="label">Match rate</div>
+                            <div>
+                                <!-- {{
+                                    data?.myCurrency == 'NGN' ? '₦' :
+                                    data?.myCurrency == 'USD' ? '$' :
+                                    data?.myCurrency == 'CAD' ? 'C$' :
+                                    data?.myCurrency == 'GBP' ? '£' :
+                                    data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
+                                }} -->
+                                ₦{{data?.rate}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="one pb-1">
+                        <div class="sub-one">
+                            <div class="label">You will pay</div>
+                            <div>
+                                {{
+                                    data?.convertedCurrency == 'NGN' || data?.convertedCurrency == 1 ? '₦' :
+                                    data?.convertedCurrency == 'USD' || data?.convertedCurrency == 2 ? '$' :
+                                    data?.convertedCurrency == 'CAD' || data?.convertedCurrency == 4 ? 'C$' :
+                                    data?.convertedCurrency == 'GBP' || data?.convertedCurrency == 3 ? '£' : 
+                                    data?.convertedCurrency == 'EUR' || data?.convertedCurrency == 5 ? '€' : data?.convertedCurrency 
+                                }}
+                                 {{data?.convertedAmount}}
+
+                            </div>
+                        </div>
+                        <div class="sub-one mt-2">
+                            <div class="label">Your Rate </div>
+                            <div>
+                                <!-- {{
+                                    data?.myCurrency == 'NGN' ? '₦' :
+                                    data?.myCurrency == 'USD' ? '$' :
+                                    data?.myCurrency == 'CAD' ? 'C$' :
+                                    data?.myCurrency == 'GBP' ? '£' :
+                                    data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
+                                }} -->
+                                ₦{{data?.rate}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="one pb-1">
+                        <div class="sub-one">
+                            <div class="label">Subtotal </div>
+                            <div>
+                                {{
+                                    data?.convertedCurrency == 'NGN' || data?.convertedCurrency == 1 ? '₦' :
+                                    data?.convertedCurrency == 'USD' || data?.convertedCurrency == 2 ? '$' :
+                                    data?.convertedCurrency == 'CAD' || data?.convertedCurrency == 4 ? 'C$' :
+                                    data?.convertedCurrency == 'GBP' || data?.convertedCurrency == 3 ? '£' : 
+                                    data?.convertedCurrency == 'EUR' || data?.convertedCurrency == 5 ? '€' : data?.convertedCurrency 
+                                }}
+                                 {{data?.convertedAmount}}
+                            </div>
+                        </div>
+                        <div class="sub-one mt-2">
+                            <div class="label">Proessing Fee</div>
+                            <div>
+                                {{
+                                    data?.convertedCurrency == 'NGN' || data?.convertedCurrency == 1?  '₦' :
+                                    data?.convertedCurrency == 'USD' || data?.convertedCurrency == 2?  '$' :
+                                    data?.convertedCurrency == 'CAD' || data?.convertedCurrency == 4?  'C$' :
+                                    data?.convertedCurrency == 'GBP' || data?.convertedCurrency == 3?  '£' : 
+                                    data?.convertedCurrency == 'EUR' || data?.convertedCurrency == 5?  '€' : data?.convertedCurrency 
+                                }}
+                                {{data?.transactionFee }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="one" style="border-bottom: 0;">
+                        <div class="sub-one">
+                            <div class="label">Total</div>
+                            <div>
+                                {{
+                                    data?.convertedCurrency == 'NGN' || data?.convertedCurrency == 1? '₦' :
+                                    data?.convertedCurrency == 'USD' || data?.convertedCurrency == 2? '$' :
+                                    data?.convertedCurrency == 'CAD' || data?.convertedCurrency == 4? 'C$' :
+                                    data?.convertedCurrency == 'GBP' || data?.convertedCurrency == 3? '£' : 
+                                    data?.convertedCurrency == 'EUR' || data?.convertedCurrency == 5? '€' : data?.convertedCurrency 
+                                }}
+                                 {{data?.convertedAmount + data?.transactionFee}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="label">
+                    <img src="assets/listing/notice.svg" alt="" width="12" height="12">
+                    You have 12 hours to make payment or  your match <br />will be cancelled.
+                </div>
+
+                <div class="btn-section" *ngIf="whoToSeeResponse=='listing'">
+                    <button mat-button (click)="close()">Pay Later</button>
+                    <button mat-button (click)="payNow('summary')">Pay Now</button>
+                </div>
+
+                <!-- Destination Account -->
+                <!-- *ngIf="whoToSeeResponse=='dashboard'" -->
+                <div class="mt-4" *ngIf="whoToSeeResponse=='dashboard'">
+                    <div class="header1 d-flex mt-0 mb-3">
+                        <div>Destination Account Details</div>
+                        <div></div>
+                    </div> 
+
+                    <div class="form-group" style="margin-bottom: 12px">
+                        <label for="bank">Bank</label>
+                        <div class="input-box">
+                            <select id="bank" [(ngModel)]="destination.bank" name="bank" class="col-12 p-0">
+                                <option *ngFor="let bank of allBanks" [value]="bank?.name"> {{bank?.name}} </option>
+                            </select>
+                          <!-- <input type="text" [(ngModel)]="destination.bank" name="bank"/> -->
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 12px">
+                        <label for="bank">Account Number</label>
+                        <div class="input-box">
+                          <input type="text" [(ngModel)]="destination.accountNumber" name="accountNumber"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 12px" *ngIf="data?.myCurrency!=='NGN' && data?.myCurrency!==1">
+                        <label for="bank">Routing Number</label>
+                        <div class="input-box">
+                          <input type="text" [(ngModel)]="destination.routingNumber" name="routingNumber"/>
+                        </div>
+                    </div>
+
+                    <div class="text-right mt-4">
+                        <button mat-button *ngIf="whoToSeeResponse=='listing'" (click)="payNow('listing')"> <span *ngIf="!loading">Pay</span><img *ngIf="loading" src="assets/auth/loader.gif" width="20" height="20" alt=""> </button>
+                        <button mat-button *ngIf="whoToSeeResponse=='dashboard'" (click)="payNow('dashboard')"><span *ngIf="!loading">Find Match</span><img *ngIf="loading" src="assets/auth/loader.gif" width="20" height="20" alt=""> </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="body modal-body" *ngIf="!success">
+                <div class="cancel"><img src="assets/response/clear.svg" alt="" (click)="close()" height="15" width="15"></div>
+
+                <div class="err-body">
+                    <div class="header1">Sorry, we couldn’t find a match.</div>
+                    <div class="header2">You may post your order to get a match<br /> later or view listing to find a prefered <br />match.</div>
+                </div>
+            
+
+                <div class="btn-section">
+                    <button mat-button>View Listing</button>
+                    <button mat-button>Post Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade animate__animated animate__fadeIn" id="payment-success"  >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content payment-success">
+            <img src="assets/payment/mark.svg" alt="">
+            <div class="success-text">Successful!</div>
+        </div>
+    </div>
+</div>

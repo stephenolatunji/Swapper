@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+h1, h2, h5, h3, h6, h4 {
+    padding: 0px;
+    margin: 0px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+body {
+  background-color: #E5E5E5;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Montserrat, "Helvetica Neue", sans-serif; height: 100%; }
+input, select , button{
+  background: transparent; outline: none !important; border: 0px;
+}
+.pointer {
+  cursor: pointer;
+}
+select{ cursor: pointer;}
+*::-webkit-scrollbar {
+  width: 0em;
+  height: 0em;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color:#262C31;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #F27348;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 0px;
+  transition: background-color 5000s ease-in-out 0s;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #254750;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  color: #254750;
+  background-color: #254750;
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: #557c7c !important;
+}
+.toast-info, .toast-success, .toast-error {
+  background-color: #262C31 !important;
+}
+
+.toast-warning {
+  background-color: #F9968B !important;
+}
+
+.toast-error {
+  background-color: #F27348 !important;
+}
